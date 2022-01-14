@@ -1,6 +1,8 @@
 package MButton
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Button struct {
 	Command Command
