@@ -1,117 +1,41 @@
 package main
 
 import (
-	"fmt"
-	"github.com/Triad-0112/UniqueCalculator/MButton"
+	"main.go/MButton"
 )
 
-type button struct {
-	command command
-}
-
-func (b *button) press() {
-	b.command.execute()
-}
-
-type command interface {
-	execute()
-}
-
-type addCommand struct {
-	calculator calculator
-}
-
-type divideCommand struct {
-	calculator calculator
-}
-
-type multiplyCommand struct {
-	calculator calculator
-}
-
-type subCommand struct {
-	calculator calculator
-}
-
-func (a *addCommand) execute() {
-	a.calculator.add()
-}
-
-func (d *divideCommand) execute() {
-	d.calculator.divide()
-}
-
-func (m *multiplyCommand) execute() {
-	m.calculator.multiply()
-}
-
-func (s *subCommand) execute() {
-	s.calculator.sub()
-}
-
-type screenCalc struct {
-	a, b  int
-	total int64
-}
-
-func (sC *screenCalc) add() {
-	sC.total = int64(sC.a + sC.b)
-	fmt.Println(sC.total)
-}
-
-func (sC *screenCalc) divide() {
-	sC.total = int64(sC.a / sC.b)
-	fmt.Println(sC.total)
-}
-
-func (sC *screenCalc) multiply() {
-	sC.total = int64(sC.a * sC.b)
-	fmt.Println(sC.total)
-}
-
-func (sC *screenCalc) sub() {
-	sC.total = int64(sC.a - sC.b)
-	fmt.Println(sC.total)
-}
-
-type calculator interface {
-	add()
-	multiply()
-	divide()
-	sub()
-}
-
 func main() {
-	calculator := &screenCalc{
-		a: 700,
-		b: 50,
+
+	calculator := &MButton.ScreenCalc{
+		A: 700,
+		B: 50,
 	}
-	addCommand := &addCommand{
-		calculator: calculator,
+	addCommand := &MButton.AddCommand{
+		Calculator: calculator,
 	}
-	subCommand := &subCommand{
-		calculator: calculator,
+	subCommand := &MButton.SubCommand{
+		Calculator: calculator,
 	}
-	multiplyCommand := &multiplyCommand{
-		calculator: calculator,
+	multiplyCommand := &MButton.MultiplyCommand{
+		Calculator: calculator,
 	}
-	divideCommand := &divideCommand{
-		calculator: calculator,
+	divideCommand := &MButton.DivideCommand{
+		Calculator: calculator,
 	}
-	addButton := &button{
-		command: addCommand,
+	addButton := &MButton.Button{
+		Command: addCommand,
 	}
-	addButton.press()
-	subButton := &button{
-		command: subCommand,
+	addButton.Press()
+	subButton := &MButton.Button{
+		Command: subCommand,
 	}
-	subButton.press()
-	multiplyButton := &button{
-		command: multiplyCommand,
+	subButton.Press()
+	multiplyButton := &MButton.Button{
+		Command: multiplyCommand,
 	}
-	multiplyButton.press()
-	divideButton := &button{
-		command: divideCommand,
+	multiplyButton.Press()
+	divideButton := &MButton.Button{
+		Command: divideCommand,
 	}
-	divideButton.press()
+	divideButton.Press()
 }
