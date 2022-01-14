@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Triad-0112/UniqueCalculator/buttonCommand"
+	"github.com/Triad-0112/UniqueCalculator/MButton"
 )
 
 type button struct {
