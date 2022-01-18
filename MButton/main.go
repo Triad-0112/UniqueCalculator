@@ -2,6 +2,7 @@ package MButton
 
 import (
 	"fmt"
+	"main.go/identification"
 )
 
 type Button struct {
@@ -17,13 +18,9 @@ type Command interface {
 }
 
 type Calculator interface {
-	Add()
-	Multiply()
-	Divide()
-	Sub()
 }
 type AddCommand struct {
-	Calculator Calculator
+	Calculator identification.Calculator
 }
 
 type DivideCommand struct {
