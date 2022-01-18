@@ -2,11 +2,17 @@ package MButton
 
 import (
 	"fmt"
-	"main.go/identification"
 )
 
 type Button struct {
 	Command Command
+}
+
+type Calculator interface {
+	Add()
+	Multiply()
+	Divide()
+	Sub()
 }
 
 func (b *Button) Press() {
@@ -17,10 +23,8 @@ type Command interface {
 	Execute()
 }
 
-type Calculator interface {
-}
 type AddCommand struct {
-	Calculator identification.Calculator
+	Calculator Calculator
 }
 
 type DivideCommand struct {
